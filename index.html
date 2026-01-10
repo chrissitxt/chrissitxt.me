@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chrissi</title>
+    <link rel="icon" type="image/png" href="assets/oshawott.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,100..400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: #000000;
+            --accent: #e9e9e9;
+            --body: #a2a2a2;
+            --sub: #6e6e6e;
+            --highlight: #222222;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --spacing: 8px;
+            --weight-body: 300;
+            --weight-accent: 400;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Google Sans Flex", sans-serif;
+            background: var(--background);
+            color: var(--accent);
+            min-height: 100vh;
+            font-weight: var(--weight-body);
+        }
+
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            transition: 0.2s;
+        }
+
+        .glass:hover {
+            filter: brightness(1.2);
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: clamp(20px, 4vw, 40px);
+            gap: clamp(24px, 5vw, 32px);
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(20px, 4vw, 32px);
+            max-width: 100%;
+            cursor: default;
+            width: 100%;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .projects-container {
+            max-height: 350px;
+        }
+
+        @media (min-width: 641px) {
+            .projects-container {
+                max-height: 400px;
+            }
+        }
+
+        @media (min-width: 969px) {
+            .container {
+                flex-direction: row;
+                gap: clamp(100px, 15vw, 400px);
+            }
+
+            .left-section {
+                max-width: 380px;
+            }
+
+            .right-section {
+                max-width: 500px;
+            }
+
+            .projects-container {
+                max-height: 520px;
+            }
+        }
+
+        .title {
+            font-size: clamp(22px, 3vw, 28px);
+            font-weight: var(--weight-accent);
+            margin-bottom: calc(var(--spacing) * 1.5);
+            color: var(--accent);
+        }
+
+        .bio {
+            font-size: clamp(14px, 1.5vw, 16px);
+            line-height: 1.7;
+            color: var(--body);
+        }
+
+        .bio p {
+            margin-bottom: calc(var(--spacing) * 2);
+        }
+
+        .socials {
+            display: flex;
+            gap: calc(var(--spacing) * 2);
+            margin-top: calc(var(--spacing) * 2.5);
+        }
+
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--sub);
+            flex-shrink: 0;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+        }
+
+        .search-container {
+            position: sticky;
+            top: 0;
+            background: var(--background);
+            padding-bottom: calc(var(--spacing) * 1.25);
+            margin-bottom: calc(var(--spacing) * 2);
+            z-index: 10;
+        }
+
+        .oshawott-container {
+            position: absolute;
+            top: -50px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        @media (max-width: 640px) {
+            .oshawott-container {
+                top: -40px;
+                right: 10px;
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .oshawott-container:hover {
+            transform: translateY(-15px);
+        }
+
+        .oshawott-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            transform: rotate(7deg);
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: calc(var(--spacing) * 1.5) 18px;
+            border-radius: var(--border-radius);
+            color: var(--accent);
+            font-size: 14px;
+            font-family: "Google Sans Flex", sans-serif;
+            outline: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .search-bar::placeholder {
+            color: var(--sub);
+        }
+
+        .search-bar:focus {
+            color: var(--accent);
+        }
+
+        .projects-container {
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .projects-container::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .projects-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .projects-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .projects-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 2.5);
+            flex-direction: column;
+            align-items: center;
+            gap: calc(var(--spacing) * 2.5);
+        }
+
+        .no-results.show {
+            display: flex;
+        }
+
+        .no-results-gif {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .no-results-text {
+            font-size: 16px;
+            color: var(--sub);
+        }
+
+        .project-card {
+            border-radius: calc(var(--border-radius) * 1.5);
+            padding: 18px;
+            margin-bottom: calc(var(--spacing) * 1.5);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            padding: var(--spacing);
+            margin: calc(var(--spacing) * -1);
+            border-radius: var(--border-radius);
+            margin-bottom: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .project-header:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .project-header-content {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 0.5);
+        }
+
+        .project-title {
+            font-size: 17px;
+            font-weight: var(--weight-accent);
+            color: var(--accent);
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--sub);
+            font-size: 13px;
+            transition: color 0.2s ease;
+        }
+
+        .project-header:hover .project-link {
+            color: #aaa;
+        }
+
+        .project-link svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .project-description {
+            font-size: 14px;
+            line-height: 1.6;
+            cursor: default;
+            color: var(--sub);
+        }
+
+        ::selection {
+            background: var(--highlight);
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+
+<div class="container">
+    <div class="left-section">
+        <div>
+            <div class="title">Hey, I'm chrissi</div>
+            <div class="bio">
+                <p>I'm a 21-year-old developer from Germany who's very passionate about lightweight, open-source and privacy-friendly software.</p>
+                <p>I don't mind working on ideas that already exists; I prefer doing things my own ways.</p>
+            </div>
+            <div class="socials">
+                <a href="https://github.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                </a>
+                <a href="https://bsky.app/profile/chrissitxt.me" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856" /></svg>
+                </a>
+                <a href="https://discord.com/invite/Qdk3TcDv6N" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></svg>
+                </a>
+                <a href="https://ko-fi.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-heart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-section">
+        <div class="search-container">
+            <div class="oshawott-container">
+                <img src="assets/oshawott.webp" class="oshawott-img">
+            </div>
+            <input class="search-bar glass" placeholder="search projects..." id="searchInput">
+        </div>
+
+        <div class="projects-container" id="projectsContainer">
+            <div class="no-results" id="noResults">
+                <img src="assets/no-results.webp" class="no-results-gif">
+                <p class="no-results-text">no projects found matching your search</p>
+            </div>
+
+            <div class="project-card glass">
+                <a href="https://modrinth.com/mod/chrissi-zoom" target="_blank" rel="noopener noreferrer" class="project-header">
+                    <img src="assets/chrissi-zoom-icon.webp" class="project-icon">
+                    <div class="project-header-content">
+                        <h3 class="project-title">chrissi's Zoom</h3>
+                        <div class="project-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>modrinth.com</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="project-description">A lightweight client-side utility mod for Minecraft that allows you to zoom with a keybind.</p>
+            </div>
+
+            <div class="project-card glass">
+                <a href="https://modrinth.com/mod/chrissi-nightvision" target="_blank" rel="noopener noreferrer" class="project-header">
+                    <img src="assets/chrissi-nightvision-icon.webp" class="project-icon">
+                    <div class="project-header-content">
+                        <h3 class="project-title">chrissi's Night Vision</h3>
+                        <div class="project-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>modrinth.com</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="project-description">A lightweight client-side utility mod for Minecraft that allows you to toggle the night vision effect with a keybind.</p>
+            </div>
+
+            <div class="project-card glass">
+                <a href="https://modrinth.com/resourcepack/chrissi-essentials" target="_blank" rel="noopener noreferrer" class="project-header">
+                    <img src="assets/chrissi-essentials-icon.webp" class="project-icon">
+                    <div class="project-header-content">
+                        <h3 class="project-title">chrissi's PvP Essentials</h3>
+                        <div class="project-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>modrinth.com</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="project-description">A lightweight all-in-one vanilla-like resource pack for Minecraft with shorter swords, lower shields, and more.</p>
+            </div>
+
+            <div class="project-card glass">
+                <a href="https://discord.com/invite/Qdk3TcDv6N" target="_blank" rel="noopener noreferrer" class="project-header">
+                    <img src="assets/hideaway-icon.webp" class="project-icon">
+                    <div class="project-header-content">
+                        <h3 class="project-title">Hideaway</h3>
+                        <div class="project-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>discord.com</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="project-description">A minimalist and quiet alternative to noisy Discord servers. No ads, no spam, no bullshit.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+    const starCount = 120;
+
+    for (let i = 0; i < starCount; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 1.2,
+            speed: Math.random() * 0.1 + 0.03,
+            opacity: Math.random() * 0.4 + 0.2
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+            ctx.fill();
+
+            star.y += star.speed;
+
+            if (star.y > canvas.height) {
+                star.y = 0;
+                star.x = Math.random() * canvas.width;
+            }
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const projectCards = document.querySelectorAll('.project-card');
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+            const matches = card.textContent.toLowerCase().includes(searchTerm);
+            card.style.display = matches ? 'block' : 'none';
+            if (matches) visibleCount++;
+        });
+
+        noResults.classList.toggle('show', visibleCount === 0 && searchTerm !== '');
+    });
+</script>
+</body>
+</html>
