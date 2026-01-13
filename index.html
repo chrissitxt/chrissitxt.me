@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chrissi</title>
     <link rel="icon" type="image/png" href="assets/oshawott.webp">
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
             --background: #000000;
@@ -16,9 +16,13 @@
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
             --spacing: 8px;
+            --spacing-2: 16px;
+            --spacing-3: 24px;
+            --spacing-4: 32px;
             --weight-body: 300;
             --weight-accent: 400;
             --border-radius: 8px;
+            --border-radius-lg: 12px;
         }
 
         * {
@@ -42,16 +46,17 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            will-change: transform;
         }
 
         .glass {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
-            transition: 0.2s;
+            transition: filter 0.2s;
         }
 
-        .glass:hover {
+        .glass-interactive:hover {
             filter: brightness(1.2);
         }
 
@@ -118,7 +123,7 @@
         .title {
             font-size: clamp(22px, 3vw, 28px);
             font-weight: var(--weight-accent);
-            margin-bottom: calc(var(--spacing) * 1.5);
+            margin-bottom: var(--spacing-2);
             color: var(--accent);
         }
 
@@ -129,13 +134,13 @@
         }
 
         .bio p {
-            margin-bottom: calc(var(--spacing) * 2);
+            margin-bottom: var(--spacing-2);
         }
 
         .socials {
             display: flex;
-            gap: calc(var(--spacing) * 2);
-            margin-top: calc(var(--spacing) * 2.5);
+            gap: var(--spacing-2);
+            margin-top: 20px;
         }
 
         .social-icon {
@@ -158,8 +163,8 @@
             position: sticky;
             top: 0;
             background: var(--background);
-            padding-bottom: calc(var(--spacing) * 1.25);
-            margin-bottom: calc(var(--spacing) * 2);
+            padding-bottom: 10px;
+            margin-bottom: var(--spacing-2);
             z-index: 10;
         }
 
@@ -196,7 +201,7 @@
 
         .search-bar {
             width: 100%;
-            padding: calc(var(--spacing) * 1.5) 18px;
+            padding: 12px 18px;
             border-radius: var(--border-radius);
             color: var(--accent);
             font-size: 14px;
@@ -239,10 +244,10 @@
         .no-results {
             display: none;
             text-align: center;
-            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 2.5);
+            padding: 40px 20px;
             flex-direction: column;
             align-items: center;
-            gap: calc(var(--spacing) * 2.5);
+            gap: 20px;
         }
 
         .no-results.show {
@@ -261,9 +266,9 @@
         }
 
         .project-card {
-            border-radius: calc(var(--border-radius) * 1.5);
+            border-radius: var(--border-radius-lg);
             padding: 18px;
-            margin-bottom: calc(var(--spacing) * 1.5);
+            margin-bottom: 12px;
         }
 
         .project-header {
@@ -275,7 +280,7 @@
             margin: calc(var(--spacing) * -1);
             border-radius: var(--border-radius);
             margin-bottom: 14px;
-            transition: all 0.2s ease;
+            transition: background 0.2s ease;
         }
 
         .project-header:hover {
@@ -293,7 +298,7 @@
         .project-header-content {
             display: flex;
             flex-direction: column;
-            gap: calc(var(--spacing) * 0.5);
+            gap: 4px;
         }
 
         .project-title {
@@ -346,16 +351,16 @@
                 <p>I don't mind working on ideas that already exists; I prefer doing things my own ways.</p>
             </div>
             <div class="socials">
-                <a href="https://github.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                <a href="https://github.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
                 </a>
-                <a href="https://bsky.app/profile/chrissitxt.me" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                <a href="https://bsky.app/profile/chrissitxt.me" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bluesky"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6.335 5.144c-1.654 -1.199 -4.335 -2.127 -4.335 .826c0 .59 .35 4.953 .556 5.661c.713 2.463 3.13 2.75 5.444 2.369c-4.045 .665 -4.889 3.208 -2.667 5.41c1.03 1.018 1.913 1.59 2.667 1.59c2 0 3.134 -2.769 3.5 -3.5c.333 -.667 .5 -1.167 .5 -1.5c0 .333 .167 .833 .5 1.5c.366 .731 1.5 3.5 3.5 3.5c.754 0 1.637 -.571 2.667 -1.59c2.222 -2.203 1.378 -4.746 -2.667 -5.41c2.314 .38 4.73 .094 5.444 -2.369c.206 -.708 .556 -5.072 .556 -5.661c0 -2.953 -2.68 -2.025 -4.335 -.826c-2.293 1.662 -4.76 5.048 -5.665 6.856c-.905 -1.808 -3.372 -5.194 -5.665 -6.856" /></svg>
                 </a>
-                <a href="https://discord.com/invite/Qdk3TcDv6N" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                <a href="https://discord.com/invite/Qdk3TcDv6N" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></svg>
                 </a>
-                <a href="https://ko-fi.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass">
+                <a href="https://ko-fi.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-heart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
                 </a>
             </div>
@@ -376,7 +381,7 @@
                 <p class="no-results-text">no projects found matching your search</p>
             </div>
 
-            <div class="project-card glass">
+            <div class="project-card glass glass-interactive" data-search="sprout vegan tracker journey private lightweight">
                 <a href="https://sprout.chrissii-txt.workers.dev/" target="_blank" rel="noopener noreferrer" class="project-header">
                     <img src="assets/sprout-icon.webp" class="project-icon">
                     <div class="project-header-content">
@@ -390,7 +395,7 @@
                 <p class="project-description">A lightweight and private vegan journey tracker. No accounts, no tracking, no clutter.</p>
             </div>
 
-            <div class="project-card glass">
+            <div class="project-card glass glass-interactive" data-search="chrissi zoom mod minecraft utility keybind">
                 <a href="https://modrinth.com/mod/chrissi-zoom" target="_blank" rel="noopener noreferrer" class="project-header">
                     <img src="assets/chrissi-zoom-icon.webp" class="project-icon">
                     <div class="project-header-content">
@@ -401,10 +406,10 @@
                         </div>
                     </div>
                 </a>
-                <p class="project-description">A lightweight client-side utility mod for Minecraft that allows you to zoom with a keybind.</p>
+                <p class="project-description">A lightweight client-side utility mod for Minecraft that allows you to zoom in by holding a keybind.</p>
             </div>
 
-            <div class="project-card glass">
+            <div class="project-card glass glass-interactive" data-search="chrissi night vision nightvision mod minecraft utility effect">
                 <a href="https://modrinth.com/mod/chrissi-nightvision" target="_blank" rel="noopener noreferrer" class="project-header">
                     <img src="assets/chrissi-nightvision-icon.webp" class="project-icon">
                     <div class="project-header-content">
@@ -418,7 +423,7 @@
                 <p class="project-description">A lightweight client-side utility mod for Minecraft that allows you to toggle the night vision effect with a keybind.</p>
             </div>
 
-            <div class="project-card glass">
+            <div class="project-card glass glass-interactive" data-search="chrissi essentials pvp resource pack minecraft texture">
                 <a href="https://modrinth.com/resourcepack/chrissi-essentials" target="_blank" rel="noopener noreferrer" class="project-header">
                     <img src="assets/chrissi-essentials-icon.webp" class="project-icon">
                     <div class="project-header-content">
@@ -432,7 +437,7 @@
                 <p class="project-description">A lightweight all-in-one vanilla-like resource pack for Minecraft with shorter swords, lower shields, and more.</p>
             </div>
 
-            <div class="project-card glass">
+            <div class="project-card glass glass-interactive" data-search="hideaway discord server community minimalist quiet">
                 <a href="https://discord.com/invite/Qdk3TcDv6N" target="_blank" rel="noopener noreferrer" class="project-header">
                     <img src="assets/hideaway-icon.webp" class="project-icon">
                     <div class="project-header-content">
@@ -452,47 +457,53 @@
 <script>
     const canvas = document.getElementById('starfield');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
 
     const stars = [];
     const starCount = 120;
+    const targetFPS = 30;
+    const frameDelay = 1000 / targetFPS;
+    let lastFrameTime = 0;
 
     for (let i = 0; i < starCount; i++) {
         stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
+            x: Math.random(),
+            y: Math.random(),
             radius: Math.random() * 1.2,
-            speed: Math.random() * 0.1 + 0.03,
+            speed: Math.random() * 0.0005 + 0.0002,
             opacity: Math.random() * 0.4 + 0.2
         });
     }
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function animate(currentTime) {
+        requestAnimationFrame(animate);
+
+        if (currentTime - lastFrameTime < frameDelay) return;
+        lastFrameTime = currentTime;
+
+        ctx.clearRect(0, 0, width, height);
 
         stars.forEach(star => {
             ctx.beginPath();
-            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.arc(star.x * width, star.y * height, star.radius, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
             ctx.fill();
 
             star.y += star.speed;
 
-            if (star.y > canvas.height) {
+            if (star.y > 1) {
                 star.y = 0;
-                star.x = Math.random() * canvas.width;
+                star.x = Math.random();
             }
         });
-
-        requestAnimationFrame(animate);
     }
 
-    animate();
+    animate(0);
 
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
     });
 
     const searchInput = document.getElementById('searchInput');
@@ -500,11 +511,12 @@
     const noResults = document.getElementById('noResults');
 
     searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
+        const searchTerm = e.target.value.toLowerCase().trim();
         let visibleCount = 0;
 
         projectCards.forEach(card => {
-            const matches = card.textContent.toLowerCase().includes(searchTerm);
+            const searchData = card.dataset.search || '';
+            const matches = searchData.includes(searchTerm);
             card.style.display = matches ? 'block' : 'none';
             if (matches) visibleCount++;
         });
