@@ -39,20 +39,10 @@
             font-weight: var(--weight-body);
         }
 
-        #starfield {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            will-change: transform;
-        }
-
         .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
             transition: filter 0.2s;
         }
 
@@ -334,13 +324,11 @@
         }
 
         ::selection {
-            background: var(--highlight);
-            color: var(--accent);
+            background: var(--highlight)
         }
     </style>
 </head>
 <body>
-<canvas id="starfield"></canvas>
 
 <div class="container">
     <div class="left-section">
@@ -354,8 +342,8 @@
                 <a href="https://github.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
                 </a>
-                <a href="https://discord.com/invite/Qdk3TcDv6N" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></svg>
+                <a href="https://signal.me/#eu/iFS6KY2KyO9Tw8Qf84OQgOKyaItK8H8DF4-9VWDJxlInNiR2wl9Ga5DGjDaWUuZ3" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" /></svg>
                 </a>
                 <a href="https://ko-fi.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-heart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
@@ -452,57 +440,6 @@
 </div>
 
 <script>
-    const canvas = document.getElementById('starfield');
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    const stars = [];
-    const starCount = 120;
-    const targetFPS = 30;
-    const frameDelay = 1000 / targetFPS;
-    let lastFrameTime = 0;
-
-    for (let i = 0; i < starCount; i++) {
-        stars.push({
-            x: Math.random(),
-            y: Math.random(),
-            radius: Math.random() * 1.2,
-            speed: Math.random() * 0.0005 + 0.0002,
-            opacity: Math.random() * 0.4 + 0.2
-        });
-    }
-
-    function animate(currentTime) {
-        requestAnimationFrame(animate);
-
-        if (currentTime - lastFrameTime < frameDelay) return;
-        lastFrameTime = currentTime;
-
-        ctx.clearRect(0, 0, width, height);
-
-        stars.forEach(star => {
-            ctx.beginPath();
-            ctx.arc(star.x * width, star.y * height, star.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-            ctx.fill();
-
-            star.y += star.speed;
-
-            if (star.y > 1) {
-                star.y = 0;
-                star.x = Math.random();
-            }
-        });
-    }
-
-    animate(0);
-
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
-
     const searchInput = document.getElementById('searchInput');
     const projectCards = document.querySelectorAll('.project-card');
     const noResults = document.getElementById('noResults');
