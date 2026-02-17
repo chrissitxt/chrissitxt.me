@@ -5,24 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chrissi</title>
     <link rel="icon" type="image/png" href="assets/oshawott.webp">
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background: #000000;
-            --accent: #e9e9e9;
-            --body: #a2a2a2;
-            --sub: #6e6e6e;
-            --highlight: #222222;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --background: #ffffff;
+            --accent: #000000;
+            --body: #000000;
+            --sub: #4f4f4f;
+            --highlight: #e0e0e0;
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.08);
             --spacing: 8px;
             --spacing-2: 16px;
             --spacing-3: 24px;
             --spacing-4: 32px;
-            --weight-body: 300;
-            --weight-accent: 400;
+            --weight-body: 400;
+            --weight-accent: 500;
             --border-radius: 8px;
             --border-radius-lg: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #000000;
+                --accent: #e9e9e9;
+                --body: #a2a2a2;
+                --sub: #6e6e6e;
+                --highlight: #222222;
+                --glass-bg: rgba(255, 255, 255, 0.03);
+                --glass-border: rgba(255, 255, 255, 0.08);
+            }
         }
 
         * {
@@ -32,7 +44,7 @@
         }
 
         body {
-            font-family: "Google Sans Flex", sans-serif;
+            font-family: "Inter", sans-serif;
             background: var(--background);
             color: var(--accent);
             min-height: 100vh;
@@ -47,7 +59,6 @@
         }
 
         .glass-interactive:hover {
-            filter: brightness(1.2);
         }
 
         .container {
@@ -111,14 +122,14 @@
         }
 
         .title {
-            font-size: clamp(22px, 3vw, 28px);
-            font-weight: var(--weight-accent);
-            margin-bottom: var(--spacing-2);
+            font-size: 20px;
+            font-weight: 480;
+            margin: 8px 0 20px 0;
             color: var(--accent);
         }
 
         .bio {
-            font-size: clamp(14px, 1.5vw, 16px);
+            font-size: 16px;
             line-height: 1.7;
             color: var(--body);
         }
@@ -185,7 +196,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
             transform: rotate(7deg);
         }
 
@@ -195,7 +205,7 @@
             border-radius: var(--border-radius);
             color: var(--accent);
             font-size: 14px;
-            font-family: "Google Sans Flex", sans-serif;
+            font-family: "Inter", sans-serif;
             outline: none;
             position: relative;
             z-index: 2;
@@ -223,12 +233,14 @@
         }
 
         .projects-container::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass-border);
             border-radius: 10px;
         }
 
         .projects-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: var(--sub);
+            opacity: 0.3;
+            border-radius: 10px;
         }
 
         .no-results {
@@ -274,7 +286,7 @@
         }
 
         .project-header:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--highlight);
         }
 
         .project-icon {
@@ -307,7 +319,7 @@
         }
 
         .project-header:hover .project-link {
-            color: #aaa;
+            color: var(--body);
         }
 
         .project-link svg {
