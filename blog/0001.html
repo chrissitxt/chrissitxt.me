@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hey, i'm chrissi</title>
+    <link rel="icon" type="image/png" href="../assets/oshawott.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="reading-progress" id="readingProgress"></div>
+
+<div class="page" id="top">
+    <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span>thoughts</span>
+    </a>
+
+    <div class="post-title">hey, i'm chrissi</div>
+    <div class="post-meta">
+        <span>August 4, 2026</span>
+    </div>
+
+    <div class="post-content">
+        <p>so, here i am, this is my blog. uh, i don't really know where to start. i guess i'll introduce myself first.</p>
+
+        <p>i'm chrissi, 21, turning 22 this november, from germany.</p>
+
+        <h2>how i got into coding</h2>
+        <p>i think i want to talk about how i got started with coding in the first place and what actually brought me here. i only really started last october, which still feels kind of recent whenever i think about it. i just sat down one day and decided i wanted to actually understand how the things i use every day work, instead of just clicking around them, so i taught myself from scratch. a lot of youtube videos at first, a lot of documentation i barely understood the first three times i read it, and if we're being honest still don't fully get some of it, and honestly a lot of leaning on AI to get my very first, extremely rough projects off the ground. i'm not gonna pretend i wrote every line myself in the beginning, i didn't, i leaned on it heavily just to get something, anything, actually working. but that's kind of how i learn best anyway: build something, break it immediately, figure out why, rebuild it slightly less broken.</p>
+
+        <p>since then i've basically been learning something new every single day. some days that's a whole new concept, other days it's just one annoying bug that ate three hours of my evening and taught me exactly one useful thing. i haven't actually published all that much yet though, but that's kind of intentional, i'm deliberately taking my time with things and trying not to put pressure on myself. most of what i do lives in half-finished folders on my computer, experiments that either turned out boring, too ambitious for where i'm currently at, or just got abandoned the second a shinier idea showed up. i've got a genuinely stupid number of ideas and concepts floating around in notes and half-written files. honestly, the only things that have actually made it out into the world so far are the minecraft mods, but you already know those if you've made it this far down the page. everything else is still cooking, or just quietly collecting dust somewhere.</p>
+
+        <h2>the mods</h2>
+        <p>i also want to talk a bit about why i actually made the mods i did. i should say right away that i'm not really the guy who cares if something already exists, i just like doing things my own way. making minecraft mods is something i've wanted to do since i was a kid honestly, so this is kind of a childhood dream thing for me, and i'm genuinely happy with how it turned out, past me would be pretty stoked. shoutout here too, this video from a german youtuber called norisk is honestly what got me into minecraft modding in the first place:</p>
+
+        <div class="post-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/zf6KM_TcK74" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <p>i wanted to start small though, something i'd actually use myself regularly. didn't have to think long before landing on night vision, fullbright mods have annoyed me for a while honestly. most of them just crank the gamma up to 100%, which never feels right to me. then there's the ones with a dozen dependencies, or ones nobody's bothered maintaining properly in years. i wanted that vanilla feel instead, lightweight, straightforward, well integrated, nothing extra.</p>
+
+        <p>worth mentioning too, starting with v0.4 i actually made the effort to finally tackle things myself instead of leaning on AI so much. before that point my code was maybe 30% actually written by me and 70% AI, which isn't exactly a flex but it's the truth. today it's at least flipped the other way around. i rewrote the mod from scratch, which was honestly a pretty crucial learning process. i picked that moment on purpose as well, minecraft 26.1 was the first unobfuscated version, and i knew the mod would benefit a lot from a rewrite anyway in the long run. that's basically the day my overall code quality improved drastically, the codebase got a lot cleaner and way easier to maintain.</p>
+
+        <svg class="post-chart" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+            <rect x="90" y="18" width="12" height="12" rx="2" fill="var(--accent)"/>
+            <text x="108" y="28" font-size="12" fill="var(--sub)">self-written</text>
+            <rect x="230" y="18" width="12" height="12" rx="2" fill="var(--highlight)" stroke="var(--glass-border)"/>
+            <text x="248" y="28" font-size="12" fill="var(--sub)">AI-assisted</text>
+
+            <line x1="40" y1="220" x2="390" y2="220" stroke="var(--glass-border)" stroke-width="1"/>
+
+            <rect x="60" y="60" width="90" height="112" rx="3" fill="var(--highlight)" stroke="var(--glass-border)"/>
+            <rect x="60" y="172" width="90" height="48" rx="3" fill="var(--accent)"/>
+            <text x="105" y="121" font-size="14" font-weight="500" fill="var(--accent)" text-anchor="middle">70%</text>
+            <text x="105" y="201" font-size="14" font-weight="500" fill="var(--background)" text-anchor="middle">30%</text>
+            <text x="105" y="240" font-size="13" fill="var(--sub)" text-anchor="middle">before v0.4</text>
+
+            <text x="210" y="146" font-size="20" fill="var(--sub)" text-anchor="middle">→</text>
+
+            <rect x="270" y="60" width="90" height="48" rx="3" fill="var(--highlight)" stroke="var(--glass-border)"/>
+            <rect x="270" y="108" width="90" height="112" rx="3" fill="var(--accent)"/>
+            <text x="315" y="89" font-size="14" font-weight="500" fill="var(--accent)" text-anchor="middle">30%</text>
+            <text x="315" y="169" font-size="14" font-weight="500" fill="var(--background)" text-anchor="middle">70%</text>
+            <text x="315" y="240" font-size="13" fill="var(--sub)" text-anchor="middle">after v0.4</text>
+        </svg>
+
+        <p class="self-note">side note, this graph was actually generated by claude, it looks pretty cool tho.</p>
+
+        <p>figured i'd explain the fabric and modrinth choice too while i'm at it, mostly because it's honestly a pretty perfect match for how i think about this stuff. both are open source, both are clearly built with good intentions, and both actually act ethically instead of just claiming to. fabric specifically is lightweight, fast, and stays genuinely up to date with new minecraft versions instead of lagging behind for months, which lines up exactly with how i want my own code to feel. modrinth's the same story on the platform side, no shady data selling, no ad-riddled download pages, just a clean place that respects the people using it. picking them honestly wasn't much of a decision, it just made sense.</p>
+
+        <p>actually, kind of perfect timing to mention this here: today's literally also the day i shipped v0.6, which finally brings mod menu support to night vision. long overdue, but it's out now. biggest thing is you can finally configure everything through an actual in-game screen instead of manually editing a json file, complete with tooltips explaining what every setting does. also added two presets if you don't want to fiddle with individual settings, default just resets everything, and subtle turns off the status icon and toggle message but keeps the sound. on top of that there's now an auto toggle by time option that turns night vision on at night and off during the day automatically, and a sound volume slider since that used to be hardcoded. if you haven't tried the mod yet, now's probably a good time.</p>
+
+        <p>also, small tangent, i've made about $35 total as a modrinth creator since joining. yeah, thirty-five dollars, over this whole stretch of time. not exactly retirement money, shockingly enough. here's a graph i brought along:</p>
+
+        <img src="https://i.postimg.cc/gjFwBgYB/2A364CC3-B67A-4399-B075-2FCD542181EF.png" alt="">
+
+        <p>that's revenue across all three mods since i joined modrinth. pvp essentials was carrying things early on, night vision picked up hard around december and then had this wild spike in june, and zoom's basically just been existing quietly in the background the whole time.</p>
+
+        <h2>philosophy</h2>
+        <p>if there's one thing that guides basically everything i do though, it's wanting it to feel right. not just technically right, actually right, ethically too, in pretty much every way. lightweight, privacy-friendly, no unnecessary bloat is the technical side of that. no shortcuts, no bullshit is basically the whole philosophy in one line. i take a lot of that from watching independent devs build things their own way without cutting corners, someone like <a href="https://github.com/wukko" target="_blank" rel="noopener noreferrer">wukko</a> comes to mind. honestly, he's someone i admire a lot, almost look up to at this point. projects like <a href="https://cobalt.tools/" target="_blank" rel="noopener noreferrer">cobalt.tools</a> and the <a href="https://helium.computer/" target="_blank" rel="noopener noreferrer">helium</a> browser are just really well done, and i find both his work and his overall philosophy genuinely inspiring.</p>
+
+        <h2>reading & writing</h2>
+        <p>outside of code though, i actually spend a lot of my time reading and writing. i've written a handful of books and short stories over the years, mostly just for myself, never really pushed them anywhere.</p>
+
+        <p>and right now i'm actually working on another one, though if i'm being fully honest it's been going on for over a year at this point. i have a really hard time staying committed while writing, i lose attachment fast, and i get way too many ideas that pull me in different directions. i'll end up writing multiple different concepts for the exact same story outline and never feel fully satisfied with any of them. and even on the rare occasion i do land on one i'm genuinely happy with, i hit some kind of block early on where the creativity just kind of dries up. right now i'm sitting at a bit over 100 pages, planned for at least 300, and yeah, i'm actually stuck in one of those blocks again as we speak.</p>
+
+        <p>it's called Jenseits der Realität. it's in german, translates to Beyond Reality in english. it's a mystery and psychological horror novel, and honestly my english still isn't quite where i'd want it to be for something this heavy and atmospheric, german just feels like the right language for it. for everyday stuff like this blog though, i'm pretty comfortable, i just run things through grammar tools like <a href="https://writewithharper.com/" target="_blank" rel="noopener noreferrer">Harper</a> to catch mistakes, and for really long texts i'll sometimes use AI to help rephrase a sentence or two so it reads more naturally. figured i'd rather just be upfront about that.</p>
+
+        <p>anyway, back to the book. i'm actually writing the whole thing based on real studies of human psychology, trying to keep the psychological side of it as grounded as possible even though the surface layer plays out like a supernatural horror. without giving anything away, it's about someone forced to return to a place from his past that he very clearly does not want to go back to, and about just how far a mind is willing to go to protect itself from something it genuinely cannot face. the whole book plays with the line between what's real and what isn't, and i'm keeping that line deliberately blurry the entire way through. that ambiguity, whether you can trust what you're reading or not, is kind of the entire point of the thing.</p>
+
+        <h2>other stuff</h2>
+        <p>anyway, i haven't even started talking about my other hobbies or niche interests. though i don't think they're actually all that niche, it's just that i hardly know anyone in my circle who's really into stuff like the VCT (valorant champions tour), yeah, i'm really into valorant esports. i'm also into football/soccer. quick word on this blog itself too while i'm at it: i built it pretty much from scratch and i'm not all that experienced yet, so don't be surprised if it looks completely different in a month or two, structure, styling, all of it will probably keep changing as i figure out what i actually want this to be. no real plan for what goes here either, just whatever's on my mind at the time.</p>
+
+        <p>i wonder if anyone will ever actually read these posts, and if i might get asked about the stuff i'm writing here, that would honestly be kind of hilarious.</p>
+
+        <img src="https://i.postimg.cc/wvvWWCYx/images.png" alt="" class="post-image">
+
+        <a href="#top" class="to-top-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            <span>back to top</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    const progressBar = document.getElementById('readingProgress');
+
+    function updateReadingProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+    }
+
+    window.addEventListener('scroll', updateReadingProgress);
+    window.addEventListener('resize', updateReadingProgress);
+    updateReadingProgress();
+</script>
+</body>
+</html>

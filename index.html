@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chrissi</title>
+    <link rel="icon" type="image/png" href="assets/oshawott.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: clamp(20px, 4vw, 40px);
+            gap: clamp(24px, 5vw, 32px);
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(20px, 4vw, 32px);
+            max-width: 100%;
+            cursor: default;
+            width: 100%;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .list-container {
+            max-height: 350px;
+        }
+
+        @media (min-width: 641px) {
+            .list-container {
+                max-height: 400px;
+            }
+        }
+
+        @media (min-width: 969px) {
+            .container {
+                flex-direction: row;
+                gap: clamp(100px, 15vw, 400px);
+            }
+
+            .left-section {
+                max-width: 380px;
+            }
+
+            .right-section {
+                max-width: 500px;
+            }
+
+            .list-container {
+                max-height: 520px;
+            }
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 480;
+            margin: 8px 0 20px 0;
+            color: var(--accent);
+        }
+
+        .bio {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--body);
+        }
+
+        .bio p {
+            margin-bottom: var(--spacing-2);
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: var(--sub);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .socials {
+            display: flex;
+            gap: var(--spacing-2);
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--sub);
+            flex-shrink: 0;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+        }
+
+        .oshawott-container {
+            position: absolute;
+            top: -50px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s ease;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        @media (max-width: 640px) {
+            .oshawott-container {
+                top: -40px;
+                right: 10px;
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .oshawott-container:hover {
+            transform: translateY(-15px);
+        }
+
+        .oshawott-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform: rotate(7deg);
+        }
+
+        .oshawott-particles {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .oshawott-particles.active {
+            opacity: 1;
+        }
+
+        .oshawott-particle {
+            position: absolute;
+            bottom: -60px;
+            object-fit: contain;
+            opacity: 0;
+            animation: oshawott-float linear infinite;
+        }
+
+        @keyframes oshawott-float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            8% {
+                opacity: var(--particle-opacity, 0.5);
+            }
+            92% {
+                opacity: var(--particle-opacity, 0.5);
+            }
+            100% {
+                transform: translate(var(--drift, 40px), -115vh) rotate(var(--spin, 20deg));
+                opacity: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .oshawott-particle {
+                animation: none;
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="oshawott-particles" id="oshawottParticles"></div>
+
+<div class="container">
+    <div class="left-section">
+        <div>
+            <div class="title">Hey, I'm chrissi</div>
+            <div class="bio">
+                <p>I'm a 21-year-old developer from Germany who's very passionate about lightweight, open-source and privacy-friendly software.</p>
+            </div>
+            <a href="blog/index.html" class="nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>
+                <span>thoughts</span>
+            </a>
+            <div class="socials">
+                <a href="https://github.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                </a>
+                <a href="mailto:chrissi.txt@protonmail.com" class="social-icon glass glass-interactive">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                </a>
+                <a href="https://discord.com/users/732621010074861588" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-discord"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-section">
+        <div class="search-container">
+            <div class="oshawott-container">
+                <img src="assets/oshawott.webp" class="oshawott-img">
+            </div>
+            <input class="search-bar glass" placeholder="search projects..." id="searchInput">
+        </div>
+
+        <div class="list-container" id="projectsContainer">
+            <div class="no-results" id="noResults">
+                <img src="assets/no-results.webp" class="no-results-gif">
+                <p class="no-results-text">no projects found matching your search</p>
+            </div>
+
+            <div class="card glass glass-interactive" data-search="chrissi zoom mod minecraft utility keybind">
+                <a href="https://modrinth.com/mod/chrissi-zoom" target="_blank" rel="noopener noreferrer" class="card-header">
+                    <img src="assets/chrissi-zoom-icon.webp" class="card-icon">
+                    <div class="card-header-content">
+                        <h3 class="card-title">chrissi's Zoom</h3>
+                        <div class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>modrinth.com</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="card-description">A lightweight client-side utility mod for Minecraft that allows you to zoom in by holding a keybind.</p>
+            </div>
+
+            <div class="card glass glass-interactive" data-search="chrissi night vision nightvision mod minecraft utility effect">
+                <a href="https://modrinth.com/mod/chrissi-nightvision" target="_blank" rel="noopener noreferrer" class="card-header">
+                    <img src="assets/chrissi-nightvision-icon.webp" class="card-icon">
+                    <div class="card-header-content">
+                        <h3 class="card-title">chrissi's Night Vision</h3>
+                        <div class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>modrinth.com</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="card-description">A lightweight client-side utility mod for Minecraft that allows you to toggle the night vision effect with a keybind.</p>
+            </div>
+
+            <div class="card glass glass-interactive" data-search="chrissi essentials pvp resource pack minecraft texture">
+                <a href="https://modrinth.com/resourcepack/chrissi-essentials" target="_blank" rel="noopener noreferrer" class="card-header">
+                    <img src="assets/chrissi-essentials-icon.webp" class="card-icon">
+                    <div class="card-header-content">
+                        <h3 class="card-title">chrissi's PvP Essentials</h3>
+                        <div class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>modrinth.com</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="card-description">A lightweight all-in-one vanilla-like resource pack for Minecraft with shorter swords, lower shields, and more.</p>
+            </div>
+
+            <div class="card glass glass-interactive" data-search="chrissi arena game roguelite browser wave survival auto-fire">
+                <a href="https://chrissitxt.github.io/chrissi-arena/" target="_blank" rel="noopener noreferrer" class="card-header">
+                    <img src="assets/chrissi-arena-icon.webp" class="card-icon">
+                    <div class="card-header-content">
+                        <h3 class="card-title">chrissi's Arena</h3>
+                        <div class="card-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                            <span>chrissitxt.github.io</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="card-description">A minimalist auto-fire roguelite. Collect gold, buy upgrades between waves, survive as long as you can.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const projectCards = document.querySelectorAll('#projectsContainer .card');
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        projectCards.forEach(card => {
+            const searchData = card.dataset.search || '';
+            const matches = searchData.includes(searchTerm);
+            card.style.display = matches ? 'block' : 'none';
+            if (matches) visibleCount++;
+        });
+
+        noResults.classList.toggle('show', visibleCount === 0 && searchTerm !== '');
+    });
+
+    const oshawottTrigger = document.querySelector('.oshawott-container');
+    const particlesLayer = document.getElementById('oshawottParticles');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let oshawottsActive = false;
+
+    function spawnOshawotts(count = 35) {
+        particlesLayer.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+            const img = document.createElement('img');
+            img.src = 'assets/oshawott.webp';
+            img.className = 'oshawott-particle';
+            const size = 16 + Math.random() * 28;
+            const left = Math.random() * 100;
+            const duration = 20 + Math.random() * 25;
+            const delay = -Math.random() * duration;
+            const drift = (Math.random() * 120 - 60).toFixed(0) + 'px';
+            const spin = (Math.random() * 40 - 20).toFixed(0) + 'deg';
+            const opacity = (0.35 + Math.random() * 0.35).toFixed(2);
+            img.style.width = size + 'px';
+            img.style.height = size + 'px';
+            img.style.left = left + 'vw';
+            img.style.animationDuration = duration + 's';
+            img.style.animationDelay = delay + 's';
+            img.style.setProperty('--drift', drift);
+            img.style.setProperty('--spin', spin);
+            img.style.setProperty('--particle-opacity', opacity);
+            particlesLayer.appendChild(img);
+        }
+    }
+
+    if (oshawottTrigger && particlesLayer && !reducedMotion) {
+        oshawottTrigger.addEventListener('click', () => {
+            oshawottsActive = !oshawottsActive;
+            if (oshawottsActive) {
+                spawnOshawotts();
+                requestAnimationFrame(() => particlesLayer.classList.add('active'));
+            } else {
+                particlesLayer.classList.remove('active');
+                setTimeout(() => {
+                    if (!oshawottsActive) particlesLayer.innerHTML = '';
+                }, 350);
+            }
+        });
+    }
+</script>
+</body>
+</html>
