@@ -68,6 +68,30 @@
             }
         }
 
+        .discord-avatar-wrap {
+            position: relative;
+            width: 88px;
+            height: 88px;
+            margin-bottom: var(--spacing-2);
+        }
+
+        .discord-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .discord-decoration {
+            position: absolute;
+            top: -12%;
+            left: -12%;
+            width: 124%;
+            height: 124%;
+            pointer-events: none;
+        }
+
         .title {
             font-size: 20px;
             font-weight: 480;
@@ -212,6 +236,10 @@
 <div class="container">
     <div class="left-section">
         <div>
+            <div class="discord-avatar-wrap">
+                <img id="discordAvatar" class="discord-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="">
+                <img id="discordDecoration" class="discord-decoration" src="" alt="" style="display: none;">
+            </div>
             <div class="title">Hey, I'm chrissi</div>
             <div class="bio">
                 <p>I'm a 21-year-old developer from Germany who's very passionate about lightweight, open-source and privacy-friendly software.</p>
@@ -227,7 +255,7 @@
                 <a href="https://x.com/chrissi_txt" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-twitter"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013l0 .001" /></svg>
                 </a>
-                <a href="https://signal.me/#eu/OvL9iVYSMjoonP27f62G2jyj0mdnVQQM7dMZlRCDUpo1ir_4K5JL-7lOneJD_lrE" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
+                <a href="https://signal.me/#eu/iFS6KY2KyO9Tw8Qf84OQgOKyaItK8H8DF4-9VWDJxlInNiR2wl9Ga5DGjDaWUuZ3" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" /></svg>
                 </a>
                 <a href="https://discord.com/users/732621010074861588" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
@@ -311,6 +339,24 @@
 </div>
 
 <script>
+    (async () => {
+        try {
+            const res = await fetch('https://api.lanyard.rest/v1/users/732621010074861588');
+            const { data } = await res.json();
+            const user = data.discord_user;
+            const avatarExt = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
+            document.getElementById('discordAvatar').src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${avatarExt}?size=128`;
+
+            if (user.avatar_decoration_data) {
+                const decoImg = document.getElementById('discordDecoration');
+                decoImg.src = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=160`;
+                decoImg.style.display = 'block';
+            }
+        } catch (e) {
+            console.error('lanyard fetch failed', e);
+        }
+    })();
+</script>
     const searchInput = document.getElementById('searchInput');
     const projectCards = document.querySelectorAll('#projectsContainer .card');
     const noResults = document.getElementById('noResults');
