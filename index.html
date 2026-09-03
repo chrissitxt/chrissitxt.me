@@ -131,6 +131,7 @@
 
         .socials {
             display: flex;
+            align-items: center;
             gap: var(--spacing-2);
             margin-top: 20px;
         }
@@ -356,7 +357,7 @@
             console.error('lanyard fetch failed', e);
         }
     })();
-</script>
+
     const searchInput = document.getElementById('searchInput');
     const projectCards = document.querySelectorAll('#projectsContainer .card');
     const noResults = document.getElementById('noResults');
