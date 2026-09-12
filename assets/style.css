@@ -62,7 +62,7 @@ html {
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: "Inter";
     background: var(--background);
     color: var(--accent);
     min-height: 100vh;
@@ -101,10 +101,48 @@ a {
     border-radius: var(--border-radius);
     color: var(--accent);
     font-size: 14px;
-    font-family: "Inter", sans-serif;
+    font-family: "Inter";
     outline: none;
     position: relative;
     z-index: 2;
+}
+
+.search-row {
+    display: flex;
+    gap: 8px;
+}
+
+.search-row .search-bar {
+    flex: 1;
+    min-width: 0;
+}
+
+.sort-toggle {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    color: var(--sub);
+    cursor: pointer;
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+.sort-toggle:hover {
+    color: var(--accent);
+}
+
+.sort-toggle svg {
+    width: 20px;
+    height: 20px;
 }
 
 .search-bar::placeholder {
@@ -160,7 +198,7 @@ a {
     padding: var(--spacing);
     margin: calc(var(--spacing) * -1);
     border-radius: var(--border-radius);
-    margin-bottom: 14px;
+    margin-bottom: var(--spacing);
     transition: background 0.2s ease;
 }
 
@@ -169,7 +207,7 @@ a {
 }
 
 .card-header:last-child {
-    margin-bottom: 0;
+    margin-bottom: calc(var(--spacing) * -1);
 }
 
 .card-icon {
@@ -316,7 +354,7 @@ a {
 }
 
 .post-content code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-family: "Google Sans Code";
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     padding: 2px 6px;

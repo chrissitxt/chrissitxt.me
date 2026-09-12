@@ -28,7 +28,7 @@
             <p class="no-results-text">no posts found matching your search</p>
         </div>
 
-        <div class="card glass glass-interactive" data-search="hello about me coding journey philosophy mods fabric modrinth reading writing book jenseits der realitaet vct football">
+        <div class="card glass glass-interactive">
             <a href="0001.html" class="card-header">
                 <div class="card-header-content">
                     <h3 class="card-title">hey, i'm chrissi</h3>
@@ -51,7 +51,8 @@
         let visibleCount = 0;
 
         postCards.forEach(card => {
-            const searchData = card.dataset.search || '';
+            const title = card.querySelector('.card-title')?.textContent || '';
+            const searchData = title.toLowerCase();
             const matches = searchData.includes(searchTerm);
             card.style.display = matches ? 'block' : 'none';
             if (matches) visibleCount++;
