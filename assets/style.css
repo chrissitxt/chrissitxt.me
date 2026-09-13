@@ -136,10 +136,6 @@ a {
     outline: none;
 }
 
-.sort-toggle:hover {
-    color: var(--accent);
-}
-
 .sort-toggle svg {
     width: 20px;
     height: 20px;
@@ -202,10 +198,6 @@ a {
     transition: background 0.2s ease;
 }
 
-.card-header:hover {
-    background: var(--highlight);
-}
-
 .card-header:last-child {
     margin-bottom: calc(var(--spacing) * -1);
 }
@@ -239,10 +231,6 @@ a {
     transition: color 0.2s ease;
 }
 
-.card-header:hover .card-link {
-    color: var(--body);
-}
-
 .card-link svg {
     width: 14px;
     height: 14px;
@@ -272,10 +260,6 @@ a {
     text-decoration: none;
     margin-bottom: var(--spacing-4);
     transition: color 0.2s ease;
-}
-
-.back-link:hover {
-    color: var(--accent);
 }
 
 .back-link svg {
@@ -340,10 +324,6 @@ a {
     text-underline-offset: 3px;
 }
 
-.post-content a:hover {
-    text-decoration-color: var(--accent);
-}
-
 .post-content ul,
 .post-content ol {
     margin: 0 0 var(--spacing-3) 20px;
@@ -378,10 +358,11 @@ a {
 }
 
 .post-content img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
     display: block;
     border-radius: var(--border-radius-lg);
-    margin: var(--spacing-2) 0 var(--spacing-3);
+    margin: var(--spacing-2) auto var(--spacing-3);
 }
 
 .post-chart {
@@ -442,12 +423,34 @@ a {
     transition: color 0.2s ease;
 }
 
-.to-top-link:hover {
-    color: var(--accent);
-}
-
 .to-top-link svg {
     width: 16px;
     height: 16px;
     flex-shrink: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .sort-toggle:hover {
+        color: var(--accent);
+    }
+
+    .card-header:hover {
+        background: var(--highlight);
+    }
+
+    .card-header:hover .card-link {
+        color: var(--body);
+    }
+
+    .back-link:hover {
+        color: var(--accent);
+    }
+
+    .post-content a:hover {
+        text-decoration-color: var(--accent);
+    }
+
+    .to-top-link:hover {
+        color: var(--accent);
+    }
 }
