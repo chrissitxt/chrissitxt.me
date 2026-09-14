@@ -109,6 +109,26 @@
             margin-bottom: var(--spacing-2);
         }
 
+        .typewriter-cursor {
+            display: inline-block;
+            animation: typewriter-blink 0.8s step-end infinite;
+        }
+
+        @keyframes typewriter-blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            50.01%, 100% {
+                opacity: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .typewriter-cursor {
+                animation: none;
+            }
+        }
+
         .nav-link {
             display: inline-flex;
             align-items: center;
@@ -244,7 +264,7 @@
             </div>
             <div class="title">Hey, I'm chrissi</div>
             <div class="bio">
-                <p>I like building lightweight, privacy-friendly software, and pretty much everything I do ends up open-source on GitHub.</p>
+                <p><span id="typewriterText"></span><span class="typewriter-cursor">|</span></p>
             </div>
             <a href="blog/index.html" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 6a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -12"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h10"/></svg>
@@ -485,6 +505,77 @@
                 }, 350);
             }
         });
+    }
+
+    const typewriterTexts = [
+        "I like building lightweight, privacy-friendly software, and pretty much everything I do ends up open-source on GitHub.",
+        "No clutter, no bullshit, just software that respects your privacy and genuinely feels great to use.",
+        "The easiest way to get in touch with me is Signal, Twitter is mostly just where I lurk and occasionally shitpost.",
+        "For what it's worth, vegan here, pro LGBTQ+ rights, and just generally rooting for people to be kind."
+    ];
+
+    const typewriterEl = document.getElementById('typewriterText');
+
+    function shuffleArray(arr) {
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
+    let textQueue = [];
+
+    function drawNextTextIndex(lastIndex) {
+        if (textQueue.length === 0) {
+            textQueue = shuffleArray(typewriterTexts.map((_, i) => i));
+            if (typeof lastIndex === 'number' && textQueue.length > 1 && textQueue[0] === lastIndex) {
+                [textQueue[0], textQueue[1]] = [textQueue[1], textQueue[0]];
+            }
+        }
+        return textQueue.shift();
+    }
+
+    if (typewriterEl) {
+        if (reducedMotion) {
+            typewriterEl.textContent = typewriterTexts[Math.floor(Math.random() * typewriterTexts.length)];
+        } else {
+            let textIndex = drawNextTextIndex();
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function typewriterLoop() {
+                const currentText = typewriterTexts[textIndex];
+
+                if (!isDeleting) {
+                    charIndex++;
+                    typewriterEl.textContent = currentText.slice(0, charIndex);
+
+                    if (charIndex === currentText.length) {
+                        setTimeout(() => {
+                            isDeleting = true;
+                            typewriterLoop();
+                        }, 12000);
+                        return;
+                    }
+                    setTimeout(typewriterLoop, 35);
+                } else {
+                    charIndex--;
+                    typewriterEl.textContent = currentText.slice(0, charIndex);
+
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        textIndex = drawNextTextIndex(textIndex);
+                        setTimeout(typewriterLoop, 400);
+                        return;
+                    }
+                    setTimeout(typewriterLoop, 20);
+                }
+            }
+
+            typewriterLoop();
+        }
     }
 </script>
 </body>
