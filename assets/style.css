@@ -67,6 +67,7 @@ body {
     color: var(--accent);
     min-height: 100vh;
     font-weight: var(--weight-body);
+    cursor: default;
 }
 
 ::selection {
@@ -363,6 +364,131 @@ a {
     display: block;
     border-radius: var(--border-radius-lg);
     margin: var(--spacing-2) auto var(--spacing-3);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* lightbox overlay for enlarging post images */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: clamp(20px, 6vw, 60px);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 0;
+}
+
+.lightbox-overlay img {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    object-fit: contain;
+    border-radius: var(--border-radius-lg);
+    display: block;
+    cursor: default;
+    margin: 0;
+    transform: scale(0.96);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.lightbox-overlay.active img {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.lightbox-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.lightbox-info a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-underline-offset: 2px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: clamp(12px, 3vw, 24px);
+    right: clamp(12px, 3vw, 24px);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    padding: 0;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+}
+
+.lightbox-nav svg {
+    width: 22px;
+    height: 22px;
+}
+
+.lightbox-prev {
+    left: clamp(8px, 3vw, 24px);
+}
+
+.lightbox-next {
+    right: clamp(8px, 3vw, 24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lightbox-overlay {
+        transition: none;
+    }
 }
 
 .post-chart {
@@ -434,6 +560,15 @@ a {
         color: var(--accent);
     }
 
+    .post-content img:hover {
+        transform: scale(1.02);
+    }
+
+    .lightbox-close:hover,
+    .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
     .card-header:hover {
         background: var(--highlight);
     }
@@ -452,5 +587,46 @@ a {
 
     .to-top-link:hover {
         color: var(--accent);
+    }
+}
+
+/* site-wide subtle starfield background */
+.starfield {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: star-drift linear infinite alternate, star-twinkle ease-in-out infinite;
+}
+
+@keyframes star-drift {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(var(--drift-x, 20vw), var(--drift-y, 20vh));
+    }
+}
+
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: var(--star-min, 0.1);
+    }
+    50% {
+        opacity: var(--star-max, 0.4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .star {
+        animation: none;
+        opacity: 0.2;
     }
 }
