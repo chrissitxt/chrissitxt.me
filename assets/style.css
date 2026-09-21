@@ -366,6 +366,8 @@ a {
     margin: var(--spacing-2) auto var(--spacing-3);
     cursor: pointer;
     transition: transform 0.2s ease;
+    background: var(--background);
+    isolation: isolate;
 }
 
 /* lightbox overlay for enlarging post images */
@@ -406,6 +408,7 @@ a {
     display: block;
     cursor: default;
     margin: 0;
+    background: #000;
     transform: scale(0.96);
     opacity: 0;
     transition: transform 0.25s ease, opacity 0.25s ease;
@@ -453,6 +456,7 @@ a {
     font-size: 22px;
     line-height: 1;
     padding: 0;
+    z-index: 1;
 }
 
 .lightbox-nav {
@@ -470,6 +474,7 @@ a {
     color: #fff;
     cursor: pointer;
     padding: 0;
+    z-index: 1;
 }
 
 .lightbox-nav svg {
@@ -602,7 +607,7 @@ a {
 .star {
     position: absolute;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--sub);
     animation: star-drift linear infinite alternate, star-twinkle ease-in-out infinite;
 }
 
