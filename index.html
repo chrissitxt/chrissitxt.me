@@ -83,6 +83,8 @@
             object-fit: cover;
         }
 
+        // decoration is bigger + shifted vs the avatar, discord doesn't
+        // document the offset, just adjusted by hand until it fit.
         .discord-decoration {
             position: absolute;
             top: -12%;
@@ -120,12 +122,6 @@
             }
             50.01%, 100% {
                 opacity: 0;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .typewriter-cursor {
-                animation: none;
             }
         }
 
@@ -230,12 +226,6 @@
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .oshawott-particle {
-                animation: none;
-                display: none;
-            }
-        }
         @media (hover: hover) and (pointer: fine) {
             .nav-link:hover {
                 color: var(--accent);
@@ -388,6 +378,8 @@
 </div>
 
 <script>
+    // pulls my live discord avatar + decoration through lanyard
+    // repo: https://github.com/Phineas/lanyard
     (async () => {
         try {
             const res = await fetch('https://api.lanyard.rest/v1/users/732621010074861588');
@@ -412,6 +404,8 @@
     const sortToggle = document.getElementById('sortToggle');
     const projectsContainer = document.getElementById('projectsContainer');
 
+    // sort button: cycles alpha -> newest -> oldest -> alpha.
+    // icons stored as raw svg paths, only 1 shown at a time.
     const sortIcons = {
         alpha: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M16 8h4l-4 8h4" /><path d="M4 16v-6a2 2 0 1 1 4 0v6" /><path d="M4 13h4" /><path d="M11 12h2" />',
         newest: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l9 0" /><path d="M4 12l7 0" /><path d="M4 18l7 0" /><path d="M15 15l3 3l3 -3" /><path d="M18 6l0 12" />',
@@ -420,6 +414,8 @@
     const sortOrder = ['alpha', 'newest', 'oldest'];
     let sortMode = 'oldest';
 
+    // moves cards via appendChild. tried css "order" once, caused
+    // render glitches, kept it simple instead.
     function sortProjectCards(mode) {
         const cards = Array.from(projectsContainer.querySelectorAll('.card'));
         cards.sort((a, b) => {
@@ -449,6 +445,7 @@
         applySortMode('oldest');
     }
 
+    // live search on every keystroke, checks title + description.
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase().trim();
         let visibleCount = 0;
@@ -467,9 +464,10 @@
 
     const oshawottTrigger = document.querySelector('.oshawott-container');
     const particlesLayer = document.getElementById('oshawottParticles');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let oshawottsActive = false;
 
+    // easter egg: click the oshawott, tiny copies float up.
+    // randomized size/speed/drift/spin so they don't look identical.
     function spawnOshawotts(count = 35) {
         particlesLayer.innerHTML = '';
         for (let i = 0; i < count; i++) {
@@ -495,7 +493,7 @@
         }
     }
 
-    if (oshawottTrigger && particlesLayer && !reducedMotion) {
+    if (oshawottTrigger && particlesLayer) {
         oshawottTrigger.addEventListener('click', () => {
             oshawottsActive = !oshawottsActive;
             if (oshawottsActive) {
@@ -510,6 +508,7 @@
         });
     }
 
+    // bio texts, typed out one at a time in random order forever.
     const typewriterTexts = [
         "I like building lightweight, privacy-friendly software, and pretty much everything I do ends up open-source on GitHub.",
         "No clutter, no bullshit, just software that respects your privacy and genuinely feels great to use.",
@@ -518,6 +517,8 @@
 
     const typewriterEl = document.getElementById('typewriterText');
 
+    // classic fisher-yates shuffle
+    // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
     function shuffleArray(arr) {
         const a = arr.slice();
         for (let i = a.length - 1; i > 0; i--) {
@@ -529,6 +530,8 @@
 
     let textQueue = [];
 
+    // shuffle bag: hands out all texts once before repeating any.
+    // the lastIndex check avoids the same text twice in a row at the seam.
     function drawNextTextIndex(lastIndex) {
         if (textQueue.length === 0) {
             textQueue = shuffleArray(typewriterTexts.map((_, i) => i));
@@ -540,44 +543,41 @@
     }
 
     if (typewriterEl) {
-        if (reducedMotion) {
-            typewriterEl.textContent = typewriterTexts[Math.floor(Math.random() * typewriterTexts.length)];
-        } else {
-            let textIndex = drawNextTextIndex();
-            let charIndex = 0;
-            let isDeleting = false;
+        let textIndex = drawNextTextIndex();
+        let charIndex = 0;
+        let isDeleting = false;
 
-            function typewriterLoop() {
-                const currentText = typewriterTexts[textIndex];
+        // types char by char, waits 12s, deletes, grabs next text, repeats.
+        function typewriterLoop() {
+            const currentText = typewriterTexts[textIndex];
 
-                if (!isDeleting) {
-                    charIndex++;
-                    typewriterEl.textContent = currentText.slice(0, charIndex);
+            if (!isDeleting) {
+                charIndex++;
+                typewriterEl.textContent = currentText.slice(0, charIndex);
 
-                    if (charIndex === currentText.length) {
-                        setTimeout(() => {
-                            isDeleting = true;
-                            typewriterLoop();
-                        }, 12000);
-                        return;
-                    }
-                    setTimeout(typewriterLoop, 35);
-                } else {
-                    charIndex--;
-                    typewriterEl.textContent = currentText.slice(0, charIndex);
-
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        textIndex = drawNextTextIndex(textIndex);
-                        setTimeout(typewriterLoop, 400);
-                        return;
-                    }
-                    setTimeout(typewriterLoop, 20);
+                if (charIndex === currentText.length) {
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typewriterLoop();
+                    }, 12000);
+                    return;
                 }
-            }
+                setTimeout(typewriterLoop, 35);
+            } else {
+                charIndex--;
+                typewriterEl.textContent = currentText.slice(0, charIndex);
 
-            typewriterLoop();
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = drawNextTextIndex(textIndex);
+                    setTimeout(typewriterLoop, 400);
+                    return;
+                }
+                setTimeout(typewriterLoop, 20);
+            }
         }
+
+        typewriterLoop();
     }
 </script>
 </body>

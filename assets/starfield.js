@@ -1,3 +1,5 @@
+// spawns 40 stars once, each with its own random drift direction + twinkle speed.
+// no ongoing spawning, css animations handle the movement from here.
 (function () {
     const layer = document.getElementById('starfield');
     if (!layer) return;
@@ -20,6 +22,7 @@
         star.style.setProperty('--drift-y', (Math.random() * 50 - 25).toFixed(1) + 'vh');
         star.style.setProperty('--star-min', (0.05 + Math.random() * 0.1).toFixed(2));
         star.style.setProperty('--star-max', (0.25 + Math.random() * 0.35).toFixed(2));
+        // comma-separated: 1 value for the drift animation, 1 for twinkle
         star.style.animationDuration = `${driftDuration.toFixed(1)}s, ${twinkleDuration.toFixed(1)}s`;
         star.style.animationDelay = `${(Math.random() * -driftDuration).toFixed(1)}s, ${(Math.random() * -twinkleDuration).toFixed(1)}s`;
 

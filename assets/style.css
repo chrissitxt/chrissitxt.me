@@ -67,6 +67,7 @@ body {
     color: var(--accent);
     min-height: 100vh;
     font-weight: var(--weight-body);
+    /* stops the text-select i-beam cursor from showing over regular text */
     cursor: default;
 }
 
@@ -199,6 +200,8 @@ a {
     transition: background 0.2s ease;
 }
 
+/* cancels out the header's own margin so cards without a description
+   (like blog cards) don't end up with uneven top/bottom padding */
 .card-header:last-child {
     margin-bottom: calc(var(--spacing) * -1);
 }
@@ -366,7 +369,10 @@ a {
     margin: var(--spacing-2) auto var(--spacing-3);
     cursor: pointer;
     transition: transform 0.2s ease;
+    /* covers up real transparency in some of the source webp files */
     background: var(--background);
+    /* fixes a compositing bug where the fixed-position starfield behind
+       everything would sometimes show through the image */
     isolation: isolate;
 }
 
@@ -456,9 +462,11 @@ a {
     font-size: 22px;
     line-height: 1;
     padding: 0;
+    /* without this the image (later in the dom) painted over the button */
     z-index: 1;
 }
 
+/* prev/next arrows, same z-index issue as the close button above */
 .lightbox-nav {
     position: absolute;
     top: 50%;
@@ -488,12 +496,6 @@ a {
 
 .lightbox-next {
     right: clamp(8px, 3vw, 24px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .lightbox-overlay {
-        transition: none;
-    }
 }
 
 .post-chart {
@@ -560,6 +562,8 @@ a {
     flex-shrink: 0;
 }
 
+/* hover styles only for real pointers, touch devices don't get real
+   hover so these used to get "stuck" until you tapped somewhere else */
 @media (hover: hover) and (pointer: fine) {
     .sort-toggle:hover {
         color: var(--accent);
@@ -607,6 +611,7 @@ a {
 .star {
     position: absolute;
     border-radius: 50%;
+    /* --sub instead of --accent, pure black dots on white looked too harsh */
     background: var(--sub);
     animation: star-drift linear infinite alternate, star-twinkle ease-in-out infinite;
 }
@@ -626,12 +631,5 @@ a {
     }
     50% {
         opacity: var(--star-max, 0.4);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .star {
-        animation: none;
-        opacity: 0.2;
     }
 }
