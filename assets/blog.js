@@ -1,4 +1,3 @@
-// fills the top bar based on scroll %
 const progressBar = document.getElementById('readingProgress');
 
 function updateReadingProgress() {
@@ -22,15 +21,13 @@ const lightboxMeta = document.getElementById('lightboxMeta');
 const lightboxImages = Array.from(document.querySelectorAll('.post-content img'));
 let currentLightboxIndex = 0;
 
-// bytes -> readable size string
 function formatBytes(bytes) {
     if (bytes < 1024) return bytes + ' B';
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
     return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
 }
 
-// loads a throwaway image just to read its real width/height, then a
-// HEAD request for the file size, browsers don't expose that directly.
+// the browser doesn't tell me the file size, so i load a hidden copy for the pixel size and ask the server for the file size
 function updateLightboxInfo(src) {
     const filename = decodeURIComponent(src.split('/').pop());
     lightboxFilename.textContent = filename;
@@ -69,8 +66,6 @@ function showLightboxImage(delta) {
     updateLightboxInfo(src);
 }
 
-// click any post image to open, close via x/outside click/esc,
-// arrows (buttons + keys) hidden automatically if there's only 1 image.
 if (lightboxOverlay && lightboxImages.length > 0) {
     lightboxImages.forEach((img, index) => {
         img.addEventListener('click', () => openLightbox(index));

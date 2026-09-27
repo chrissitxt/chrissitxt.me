@@ -67,7 +67,7 @@ body {
     color: var(--accent);
     min-height: 100vh;
     font-weight: var(--weight-body);
-    /* stops the text-select i-beam cursor from showing over regular text */
+    /* i don't want the text cursor showing up over normal text */
     cursor: default;
 }
 
@@ -79,7 +79,6 @@ a {
     color: inherit;
 }
 
-/* glass surface */
 .glass {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -87,7 +86,6 @@ a {
     transition: filter 0.2s;
 }
 
-/* search bar */
 .search-container {
     position: sticky;
     top: 0;
@@ -151,7 +149,6 @@ a {
     color: var(--accent);
 }
 
-/* list container, used by projects + blog list */
 .list-container {
     overflow-y: auto;
     padding-right: 10px;
@@ -181,7 +178,6 @@ a {
     color: var(--sub);
 }
 
-/* card, used by projects + blog list. icon is optional */
 .card {
     border-radius: var(--border-radius-lg);
     padding: 18px;
@@ -200,8 +196,7 @@ a {
     transition: background 0.2s ease;
 }
 
-/* cancels out the header's own margin so cards without a description
-   (like blog cards) don't end up with uneven top/bottom padding */
+/* cards without a description had more space at the bottom, this evens it out */
 .card-header:last-child {
     margin-bottom: calc(var(--spacing) * -1);
 }
@@ -248,7 +243,6 @@ a {
     color: var(--sub);
 }
 
-/* single-column shell for blog list + posts */
 .page {
     max-width: 720px;
     margin: 0 auto;
@@ -286,7 +280,6 @@ a {
     margin-bottom: var(--spacing-4);
 }
 
-/* post */
 .post-title {
     font-size: 26px;
     font-weight: var(--weight-accent);
@@ -338,7 +331,7 @@ a {
 }
 
 .post-content code {
-    font-family: "Google Sans Code";
+    font-family: "Inter";
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     padding: 2px 6px;
@@ -353,7 +346,6 @@ a {
     margin-bottom: var(--spacing-3);
 }
 
-/* quiet aside within a post, e.g. a note to self */
 .self-note {
     font-style: italic;
     color: var(--sub);
@@ -369,14 +361,12 @@ a {
     margin: var(--spacing-2) auto var(--spacing-3);
     cursor: pointer;
     transition: transform 0.2s ease;
-    /* covers up real transparency in some of the source webp files */
+    /* some of my webp files have see-through bits, this fills them in */
     background: var(--background);
-    /* fixes a compositing bug where the fixed-position starfield behind
-       everything would sometimes show through the image */
+    /* without this the stars sometimes showed through the images */
     isolation: isolate;
 }
 
-/* lightbox overlay for enlarging post images */
 .lightbox-overlay {
     position: fixed;
     inset: 0;
@@ -462,11 +452,10 @@ a {
     font-size: 22px;
     line-height: 1;
     padding: 0;
-    /* without this the image (later in the dom) painted over the button */
+    /* the image comes later in the html so it was drawn over the buttons, this keeps them on top */
     z-index: 1;
 }
 
-/* prev/next arrows, same z-index issue as the close button above */
 .lightbox-nav {
     position: absolute;
     top: 50%;
@@ -521,7 +510,6 @@ a {
     border: 0;
 }
 
-/* smaller centered image, e.g. for closing out a post */
 .post-content .post-image {
     display: block;
     width: 100%;
@@ -530,7 +518,6 @@ a {
     border-radius: var(--border-radius-lg);
 }
 
-/* reading progress bar, fixed to viewport top on post pages */
 .reading-progress {
     position: fixed;
     top: 0;
@@ -542,7 +529,6 @@ a {
     transition: width 0.1s ease-out;
 }
 
-/* back to top link at the end of a post */
 .to-top-link {
     display: flex;
     align-items: center;
@@ -562,8 +548,7 @@ a {
     flex-shrink: 0;
 }
 
-/* hover styles only for real pointers, touch devices don't get real
-   hover so these used to get "stuck" until you tapped somewhere else */
+/* only for real mice, on phones hover effects got stuck until you tapped somewhere else */
 @media (hover: hover) and (pointer: fine) {
     .sort-toggle:hover {
         color: var(--accent);
@@ -611,7 +596,7 @@ a {
 .star {
     position: absolute;
     border-radius: 50%;
-    /* --sub instead of --accent, pure black dots on white looked too harsh */
+    /* pure black dots on white looked too harsh, so i went with --sub */
     background: var(--sub);
     animation: star-drift linear infinite alternate, star-twinkle ease-in-out infinite;
 }
