@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chrissi's thoughts</title>
-    <link rel="icon" type="image/png" href="../assets/oshawott.webp">
+    <link rel="icon" type="image/webp" href="../assets/oshawott.webp">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -31,7 +31,7 @@
             <p class="no-results-text">no posts found matching your search</p>
         </div>
 
-        <div class="card glass glass-interactive">
+        <div class="card glass">
             <a href="0002.html" class="card-header">
                 <div class="card-header-content">
                     <h3 class="card-title">on digital footprints</h3>
@@ -42,7 +42,7 @@
             </a>
         </div>
 
-        <div class="card glass glass-interactive">
+        <div class="card glass">
             <a href="0001.html" class="card-header">
                 <div class="card-header-content">
                     <h3 class="card-title">hey, i'm chrissi</h3>
@@ -66,8 +66,7 @@
 
         postCards.forEach(card => {
             const title = card.querySelector('.card-title')?.textContent || '';
-            const searchData = title.toLowerCase();
-            const matches = searchData.includes(searchTerm);
+            const matches = title.toLowerCase().includes(searchTerm);
             card.style.display = matches ? 'block' : 'none';
             if (matches) visibleCount++;
         });

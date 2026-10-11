@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chrissi</title>
-    <link rel="icon" type="image/png" href="assets/oshawott.webp">
+    <link rel="icon" type="image/webp" href="assets/oshawott.webp">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <style>
@@ -27,7 +27,6 @@
             flex-direction: column;
             gap: clamp(20px, 4vw, 32px);
             max-width: 100%;
-            cursor: default;
             width: 100%;
         }
 
@@ -95,7 +94,7 @@
 
         .title {
             font-size: 20px;
-            font-weight: 480;
+            font-weight: var(--weight-accent);
             margin: 8px 0 20px 0;
             color: var(--accent);
         }
@@ -263,16 +262,16 @@
                 <span>thoughts</span>
             </a>
             <div class="socials">
-                <a href="https://github.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
+                <a href="https://github.com/chrissitxt" target="_blank" rel="noopener noreferrer" class="social-icon glass">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
                 </a>
-                <a href="https://x.com/chrissi_txt" class="social-icon glass glass-interactive">
+                <a href="https://x.com/chrissi_txt" class="social-icon glass">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013l0 .001" /></svg>
                 </a>
-                <a href="https://signal.me/#eu/iFS6KY2KyO9Tw8Qf84OQgOKyaItK8H8DF4-9VWDJxlInNiR2wl9Ga5DGjDaWUuZ3" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
+                <a href="https://signal.me/#eu/iFS6KY2KyO9Tw8Qf84OQgOKyaItK8H8DF4-9VWDJxlInNiR2wl9Ga5DGjDaWUuZ3" target="_blank" rel="noopener noreferrer" class="social-icon glass">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" /></svg>
                 </a>
-                <a href="https://discord.com/users/732621010074861588" target="_blank" rel="noopener noreferrer" class="social-icon glass glass-interactive">
+                <a href="https://discord.com/users/732621010074861588" target="_blank" rel="noopener noreferrer" class="social-icon glass">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3" /><path d="M7 16.5c3.5 1 6.5 1 10 0" /></svg>
                 </a>
             </div>
@@ -285,7 +284,7 @@
                 <img src="assets/oshawott.webp" class="oshawott-img">
             </div>
             <div class="search-row">
-                <button class="sort-toggle glass glass-interactive" id="sortToggle" type="button">
+                <button class="sort-toggle glass" id="sortToggle" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-sort-ascending"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l7 0" /><path d="M4 12l7 0" /><path d="M4 18l9 0" /><path d="M15 9l3 -3l3 3" /><path d="M18 6l0 12" /></svg>
                 </button>
                 <input class="search-bar glass" placeholder="search projects..." id="searchInput">
@@ -298,7 +297,7 @@
                 <p class="no-results-text">no projects found matching your search</p>
             </div>
 
-            <div class="card glass glass-interactive" data-date="2026-03">
+            <div class="card glass" data-date="2026-03">
                 <a href="https://modrinth.com/mod/chrissi-zoom" target="_blank" rel="noopener noreferrer" class="card-header">
                     <img src="assets/chrissi-zoom-icon.webp" class="card-icon">
                     <div class="card-header-content">
@@ -313,7 +312,7 @@
                 <p class="card-description">A lightweight client-side utility mod for Minecraft that allows you to zoom in by holding a keybind.</p>
             </div>
 
-            <div class="card glass glass-interactive" data-date="2025-10">
+            <div class="card glass" data-date="2025-10">
                 <a href="https://modrinth.com/mod/chrissi-nightvision" target="_blank" rel="noopener noreferrer" class="card-header">
                     <img src="assets/chrissi-nightvision-icon.webp" class="card-icon">
                     <div class="card-header-content">
@@ -328,7 +327,7 @@
                 <p class="card-description">A lightweight client-side utility mod for Minecraft that allows you to toggle the night vision effect with a keybind.</p>
             </div>
 
-            <div class="card glass glass-interactive" data-date="2024-11">
+            <div class="card glass" data-date="2024-11">
                 <a href="https://modrinth.com/resourcepack/chrissi-essentials" target="_blank" rel="noopener noreferrer" class="card-header">
                     <img src="assets/chrissi-essentials-icon.webp" class="card-icon">
                     <div class="card-header-content">
@@ -343,7 +342,7 @@
                 <p class="card-description">A lightweight all-in-one vanilla-like resource pack for Minecraft with shorter swords, lower shields, and more.</p>
             </div>
 
-            <div class="card glass glass-interactive" data-date="2026-09">
+            <div class="card glass" data-date="2026-09">
                 <a href="https://chrissitxt.github.io/chrissi-password-generator/" target="_blank" rel="noopener noreferrer" class="card-header">
                     <img src="assets/chrissi-password-generator-icon.webp" class="card-icon">
                     <div class="card-header-content">
@@ -358,7 +357,7 @@
                 <p class="card-description">A lightweight, client-side password generator with adjustable length and character options.</p>
             </div>
 
-            <div class="card glass glass-interactive" data-date="2026-09">
+            <div class="card glass" data-date="2026-09">
                 <a href="https://chrissitxt.github.io/chrissi-metadata-remover/" target="_blank" rel="noopener noreferrer" class="card-header">
                     <img src="assets/chrissi-metadata-remover-icon.webp" class="card-icon">
                     <div class="card-header-content">
@@ -373,7 +372,7 @@
                 <p class="card-description">A lightweight, client-side tool for stripping EXIF and other metadata from your files.</p>
             </div>
 
-            <div class="card glass glass-interactive" data-date="2026-01">
+            <div class="card glass" data-date="2026-01">
                 <a href="https://github.com/chrissitxt/chrissi-history-cleaner" target="_blank" rel="noopener noreferrer" class="card-header">
                     <img src="assets/history-cleaner-icon.webp" class="card-icon">
                     <div class="card-header-content">
@@ -391,198 +390,6 @@
     </div>
 </div>
 
-<script>
-    // i pull my live discord avatar + decoration through lanyard
-    // https://github.com/Phineas/lanyard
-    (async () => {
-        try {
-            const res = await fetch('https://api.lanyard.rest/v1/users/732621010074861588');
-            const { data } = await res.json();
-            const user = data.discord_user;
-            const avatarExt = user.avatar && user.avatar.startsWith('a_') ? 'gif' : 'png';
-            document.getElementById('discordAvatar').src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${avatarExt}?size=128`;
-
-            if (user.avatar_decoration_data) {
-                const decoImg = document.getElementById('discordDecoration');
-                decoImg.src = `https://cdn.discordapp.com/avatar-decoration-presets/${user.avatar_decoration_data.asset}.png?size=160`;
-                decoImg.style.display = 'block';
-            }
-        } catch (e) {
-            console.error('lanyard fetch failed', e);
-        }
-    })();
-
-    const searchInput = document.getElementById('searchInput');
-    const projectCards = document.querySelectorAll('#projectsContainer .card');
-    const noResults = document.getElementById('noResults');
-    const sortToggle = document.getElementById('sortToggle');
-    const projectsContainer = document.getElementById('projectsContainer');
-
-    const sortIcons = {
-        alpha: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M16 8h4l-4 8h4" /><path d="M4 16v-6a2 2 0 1 1 4 0v6" /><path d="M4 13h4" /><path d="M11 12h2" />',
-        newest: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l9 0" /><path d="M4 12l7 0" /><path d="M4 18l7 0" /><path d="M15 15l3 3l3 -3" /><path d="M18 6l0 12" />',
-        oldest: '<path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6l7 0" /><path d="M4 12l7 0" /><path d="M4 18l9 0" /><path d="M15 9l3 -3l3 3" /><path d="M18 6l0 12" />'
-    };
-    const sortOrder = ['alpha', 'newest', 'oldest'];
-    let sortMode = 'oldest';
-
-    // i tried sorting with css order once but it glitched the rendering, so i just move the cards around
-    function sortProjectCards(mode) {
-        const cards = Array.from(projectsContainer.querySelectorAll('.card'));
-        cards.sort((a, b) => {
-            if (mode === 'alpha') {
-                const titleA = a.querySelector('.card-title').textContent.trim().toLowerCase();
-                const titleB = b.querySelector('.card-title').textContent.trim().toLowerCase();
-                return titleA.localeCompare(titleB);
-            }
-            const dateA = a.dataset.date;
-            const dateB = b.dataset.date;
-            return mode === 'newest' ? dateB.localeCompare(dateA) : dateA.localeCompare(dateB);
-        });
-        cards.forEach(card => projectsContainer.appendChild(card));
-    }
-
-    function applySortMode(mode) {
-        sortMode = mode;
-        sortToggle.querySelector('svg').innerHTML = sortIcons[mode];
-        sortProjectCards(mode);
-    }
-
-    if (sortToggle) {
-        sortToggle.addEventListener('click', () => {
-            const nextIndex = (sortOrder.indexOf(sortMode) + 1) % sortOrder.length;
-            applySortMode(sortOrder[nextIndex]);
-        });
-        applySortMode('oldest');
-    }
-
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase().trim();
-        let visibleCount = 0;
-
-        projectCards.forEach(card => {
-            const title = card.querySelector('.card-title')?.textContent || '';
-            const description = card.querySelector('.card-description')?.textContent || '';
-            const searchData = (title + ' ' + description).toLowerCase();
-            const matches = searchData.includes(searchTerm);
-            card.style.display = matches ? 'block' : 'none';
-            if (matches) visibleCount++;
-        });
-
-        noResults.classList.toggle('show', visibleCount === 0 && searchTerm !== '');
-    });
-
-    const oshawottTrigger = document.querySelector('.oshawott-container');
-    const particlesLayer = document.getElementById('oshawottParticles');
-    let oshawottsActive = false;
-
-    function spawnOshawotts(count = 35) {
-        particlesLayer.innerHTML = '';
-        for (let i = 0; i < count; i++) {
-            const img = document.createElement('img');
-            img.src = 'assets/oshawott.webp';
-            img.className = 'oshawott-particle';
-            const size = 16 + Math.random() * 28;
-            const left = Math.random() * 100;
-            const duration = 20 + Math.random() * 25;
-            const delay = -Math.random() * duration;
-            const drift = (Math.random() * 120 - 60).toFixed(0) + 'px';
-            const spin = (Math.random() * 40 - 20).toFixed(0) + 'deg';
-            const opacity = (0.35 + Math.random() * 0.35).toFixed(2);
-            img.style.width = size + 'px';
-            img.style.height = size + 'px';
-            img.style.left = left + 'vw';
-            img.style.animationDuration = duration + 's';
-            img.style.animationDelay = delay + 's';
-            img.style.setProperty('--drift', drift);
-            img.style.setProperty('--spin', spin);
-            img.style.setProperty('--particle-opacity', opacity);
-            particlesLayer.appendChild(img);
-        }
-    }
-
-    if (oshawottTrigger && particlesLayer) {
-        oshawottTrigger.addEventListener('click', () => {
-            oshawottsActive = !oshawottsActive;
-            if (oshawottsActive) {
-                spawnOshawotts();
-                requestAnimationFrame(() => particlesLayer.classList.add('active'));
-            } else {
-                particlesLayer.classList.remove('active');
-                setTimeout(() => {
-                    if (!oshawottsActive) particlesLayer.innerHTML = '';
-                }, 350);
-            }
-        });
-    }
-
-    const typewriterTexts = [
-        "I like building lightweight, privacy-friendly software, and pretty much everything I do ends up open-source on GitHub.",
-        "No clutter, no bullshit, just software that respects your privacy and genuinely feels great to use.",
-        "The easiest way to get in touch with me is Signal, Twitter is mostly just where I lurk and occasionally shitpost."
-    ];
-
-    const typewriterEl = document.getElementById('typewriterText');
-
-    // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
-    function shuffleArray(arr) {
-        const a = arr.slice();
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-    }
-
-    let textQueue = [];
-
-    // every text shows once before any repeats, and the swap stops the same one showing twice when a new round starts
-    function drawNextTextIndex(lastIndex) {
-        if (textQueue.length === 0) {
-            textQueue = shuffleArray(typewriterTexts.map((_, i) => i));
-            if (typeof lastIndex === 'number' && textQueue.length > 1 && textQueue[0] === lastIndex) {
-                [textQueue[0], textQueue[1]] = [textQueue[1], textQueue[0]];
-            }
-        }
-        return textQueue.shift();
-    }
-
-    if (typewriterEl) {
-        let textIndex = drawNextTextIndex();
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typewriterLoop() {
-            const currentText = typewriterTexts[textIndex];
-
-            if (!isDeleting) {
-                charIndex++;
-                typewriterEl.textContent = currentText.slice(0, charIndex);
-
-                if (charIndex === currentText.length) {
-                    setTimeout(() => {
-                        isDeleting = true;
-                        typewriterLoop();
-                    }, 12000);
-                    return;
-                }
-                setTimeout(typewriterLoop, 35);
-            } else {
-                charIndex--;
-                typewriterEl.textContent = currentText.slice(0, charIndex);
-
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = drawNextTextIndex(textIndex);
-                    setTimeout(typewriterLoop, 400);
-                    return;
-                }
-                setTimeout(typewriterLoop, 20);
-            }
-        }
-
-        typewriterLoop();
-    }
-</script>
+<script src="assets/home.js"></script>
 </body>
 </html>

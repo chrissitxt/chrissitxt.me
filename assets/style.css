@@ -35,26 +35,6 @@ html {
     scrollbar-color: var(--glass-border) transparent;
 }
 
-*::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-*::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-    background: var(--glass-border);
-    border-radius: 10px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-    background: var(--sub);
-    opacity: 0.3;
-    border-radius: 10px;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -83,7 +63,6 @@ a {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(12px);
-    transition: filter 0.2s;
 }
 
 .search-container {
@@ -130,9 +109,6 @@ a {
     border: none;
     background: transparent;
     appearance: none;
-    -webkit-appearance: none;
-    padding: 0;
-    margin: 0;
     outline: none;
 }
 
@@ -143,10 +119,6 @@ a {
 
 .search-bar::placeholder {
     color: var(--sub);
-}
-
-.search-bar:focus {
-    color: var(--accent);
 }
 
 .list-container {
@@ -239,7 +211,6 @@ a {
 .card-description {
     font-size: 14px;
     line-height: 1.6;
-    cursor: default;
     color: var(--sub);
 }
 
@@ -269,7 +240,7 @@ a {
 .page-title {
     font-size: 26px;
     font-weight: var(--weight-accent);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: var(--accent);
 }
 
@@ -278,13 +249,6 @@ a {
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: var(--spacing-4);
-}
-
-.post-title {
-    font-size: 26px;
-    font-weight: var(--weight-accent);
-    margin-bottom: 10px;
-    color: var(--accent);
 }
 
 .post-meta {
@@ -376,13 +340,10 @@ a {
     justify-content: center;
     z-index: 200;
     padding: clamp(20px, 6vw, 60px);
-    opacity: 0;
-    transition: opacity 0.2s ease;
 }
 
 .lightbox-overlay.active {
     display: flex;
-    opacity: 1;
 }
 
 .lightbox-figure {
@@ -401,18 +362,7 @@ a {
     flex: 1 1 auto;
     object-fit: contain;
     border-radius: var(--border-radius-lg);
-    display: block;
-    cursor: default;
-    margin: 0;
     background: #000;
-    transform: scale(0.96);
-    opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.lightbox-overlay.active img {
-    transform: scale(1);
-    opacity: 1;
 }
 
 .lightbox-info {
@@ -451,7 +401,6 @@ a {
     cursor: pointer;
     font-size: 22px;
     line-height: 1;
-    padding: 0;
     /* the image comes later in the html so it was drawn over the buttons, this keeps them on top */
     z-index: 1;
 }
@@ -470,7 +419,6 @@ a {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
     cursor: pointer;
-    padding: 0;
     z-index: 1;
 }
 
