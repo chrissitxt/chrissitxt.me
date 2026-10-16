@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found</title>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fff8fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181214" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/webp" href="/favicon.webp">
+<style>
+@font-face {
+    font-family: Lora;
+    font-weight: 500;
+    font-display: block;
+    src: url(/assets/lora.woff) format("woff");
+}
+
+:root {
+    --background: #fff8fa;
+    --accent: #261a1e;
+    --body: #664f5a;
+    --highlight: #fce4eb;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #181214;
+        --accent: #fbeaee;
+        --body: #b9a0a8;
+        --highlight: #33232a;
+    }
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: Lora;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.35;
+    background: var(--background);
+    color: var(--body);
+    cursor: default;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::selection {
+    background: var(--highlight);
+}
+
+main {
+    flex: 1;
+    max-width: 500px;
+    margin: 16px;
+}
+
+/* the square favicon cropped to the plush */
+img {
+    display: block;
+    width: 29px;
+    height: 38px;
+    object-fit: cover;
+}
+
+h1 {
+    margin-top: 12px;
+    font-size: 1.25em;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+p {
+    margin-top: 16px;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 3px;
+}
+</style>
+</head>
+<body>
+<main>
+    <img src="/favicon.webp" alt="">
+    <h1>Oops, nothing here</h1>
+    <p>I looked everywhere, but this page doesn't exist. Maybe it moved, or the link is a little off.</p>
+    <p><a href="/">Back to home</a></p>
+</main>
+</body>
+</html>

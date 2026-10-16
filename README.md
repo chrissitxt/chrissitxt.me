@@ -1,4 +1,4 @@
-My personal portfolio, a single index.html.
+My personal portfolio.
 
 Font: Lora (SIL Open Font License), weight 500, 16px text and 20px heading.
 
