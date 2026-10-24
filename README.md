@@ -1,4 +1,8 @@
+# chrissi's Portfolio
+
 My personal portfolio.
+
+## Design
 
 Font: Lora (SIL Open Font License), weight 500, 16px text and 20px heading.
 
@@ -9,4 +13,5 @@ Design tokens, blush theme. Light and dark follow the system.
 | background | `#fff8fa` | `#181214` |
 | accent | `#261a1e` | `#fbeaee` |
 | body | `#664f5a` | `#b9a0a8` |
+| sub | `#7d6872` | `#988189` |
 | highlight | `#fce4eb` | `#33232a` |

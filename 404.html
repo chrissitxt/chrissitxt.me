@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found</title>
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#fff8fa" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#181214" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/webp" href="/favicon.webp">
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found</title>
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fff8fa" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#181214" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/webp" href="/favicon.webp">
+    <style>
 @font-face {
-    font-family: Lora;
+    font-family: "Lora";
     font-weight: 500;
     font-display: block;
-    src: url(/assets/lora.woff) format("woff");
+    src: url("/assets/Lora-Medium.woff2") format("woff2");
 }
 
 :root {
@@ -36,28 +36,29 @@
     margin: 0;
 }
 
+main {
+    flex: 1;
+    max-width: 500px;
+    margin: 16px;
+}
+
 body {
-    font-family: Lora;
+    font-family: "Lora";
     font-size: 16px;
     font-weight: 500;
     line-height: 1.35;
     background: var(--background);
     color: var(--body);
     cursor: default;
-    min-height: 100dvh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
     background: var(--highlight);
-}
-
-main {
-    flex: 1;
-    max-width: 500px;
-    margin: 16px;
 }
 
 /* the square favicon cropped to the plush */
@@ -83,7 +84,7 @@ a {
     color: inherit;
     text-underline-offset: 3px;
 }
-</style>
+    </style>
 </head>
 <body>
 <main>
