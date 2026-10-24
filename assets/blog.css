@@ -1,0 +1,187 @@
+/* same tokens as index.html */
+:root {
+    --background: #fff8fa;
+    --accent: #261a1e;
+    --body: #664f5a;
+    --sub: #7d6872;
+    --highlight: #fce4eb;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #181214;
+        --accent: #fbeaee;
+        --body: #b9a0a8;
+        --sub: #988189;
+        --highlight: #33232a;
+    }
+}
+
+@font-face {
+    font-family: "Crimson Pro";
+    font-weight: 500;
+    font-display: block;
+    src: url("CrimsonPro-Medium.woff2") format("woff2");
+}
+
+* {
+    margin: 0;
+}
+
+main {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+/* same text settings as index.html */
+body {
+    font-family: "Crimson Pro";
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.35;
+    background: var(--background);
+    color: var(--body);
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: var(--highlight);
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 3px;
+}
+
+h1,
+h2 {
+    font-size: 1.25em;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+main > h1 {
+    margin-top: 48px;
+}
+
+p {
+    margin-top: 16px;
+}
+
+.sub {
+    font-size: 0.9em;
+    color: var(--sub);
+}
+
+footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--sub);
+}
+
+footer div {
+    display: flex;
+    gap: 16px;
+}
+
+/* post list */
+.posts {
+    margin-top: 24px;
+    padding: 0;
+    list-style: none;
+}
+
+.posts li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.posts a {
+    color: var(--accent);
+}
+
+.posts time {
+    flex-shrink: 0;
+    color: var(--sub);
+}
+
+/* single post */
+article {
+    margin-top: 48px;
+}
+
+article time {
+    display: block;
+    color: var(--sub);
+}
+
+article h1 {
+    margin-top: 8px;
+}
+
+article h2 {
+    margin-top: 32px;
+}
+
+article ul {
+    margin-top: 16px;
+    padding-left: 24px;
+}
+
+article li + li {
+    margin-top: 4px;
+}
+
+article li::marker {
+    color: var(--sub);
+}
+
+blockquote {
+    margin-top: 16px;
+    padding-left: 16px;
+    border-left: 2px solid var(--sub);
+}
+
+code {
+    font: inherit;
+    padding: 0 4px;
+    border-radius: 4px;
+    background: var(--highlight);
+}
+
+article img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 24px auto 0;
+    border-radius: 8px;
+}
+
+/* the portrait photo is narrower than the screenshots */
+.post-image {
+    max-width: 320px;
+}
+
+.post-video {
+    margin-top: 24px;
+    aspect-ratio: 16 / 9;
+}
+
+.post-video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
+}
+
+.post-chart {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 24px auto 0;
+}
